@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Http\Controllers\PizzaController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PublicPizzaController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -16,6 +17,8 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
+
+Route::get('/order/{pizza}', [PublicPizzaController::class, 'show'])->name('public.pizzas.show');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
